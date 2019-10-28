@@ -1,17 +1,46 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<form action="/new_order/" method="post">
-{% csrf_token %}
 
-{% for dish in object_list %}
-<p><input class="checkbox" type="checkbox" name='dish_cart' id="checkbox_{{ dish.id }}"value="{{ dish.id }}">{{dish.name}} | {{ dish.price }}</p>    
-<p></p>
-{% endfor %}
 
-<p>Address: <input class="text-input" type="text" name='destination'></p>   
-    
-
-<input id="send_selected" type="submit" value="Add to cart" />
-</form>
+<div class="container-fluid h-100 ">
+    <div class="row h-100">
+        <div class="col-md-6 my-auto">
+            <div class="container my-order">
+                <h2>Order #</h2>
+                <ul class="orderListing">
+                </ul>
+                <p class="total"></p>
+            </div>
+        </div>
+        <div class="col-md-6 my-auto dish-main">
+            <form action="/new_order/" method="post">
+                {% csrf_token %}
+                <div class="row dishesList">
+                    {% for dish in object_list %}
+                    <div class="col-md-6 dish">
+                        <div class="row">
+                            <div class="col-md-1 align-self-center dishId">{{dish.id}}</div>
+                            <div class="col-md-7 align-self-center dishName">{{dish.name}}</div>
+                            <div class="col-md-2 align-self-center price">{{dish.price }}</div>
+                            <div class="col-md-2 align-self-center">
+                                <button type="button" class="btn btn-success addToCart">
+                                    <i class="fa fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                 <div class="form-group col-lg-7">
+                        <input type="text" class="form-control" name="destination"  placeholder="Address">
+                    </div>
+                <div class="dishes-button">
+                    <input id="send_selected" type="submit" class="btn btn-success cartSubmit" value="Submit Order"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/js/innofood.js"></script>
 {% endblock %}

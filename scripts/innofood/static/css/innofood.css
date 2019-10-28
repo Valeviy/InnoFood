@@ -156,7 +156,7 @@ margin: 30px;
   background-color: #46A04F;
 }
 
-  
+
 #mainNav .navbar-nav > li > a.active:hover {
   background-color: #46A04F;
 }
@@ -272,9 +272,6 @@ header.masthead .header-content p{
      font-size: 7vh;
   }
 }
-
-
-
 
 
 footer {
@@ -399,6 +396,7 @@ a {
     background-color: #444B4E;
     margin: 1rem;
     padding: 1rem;
+    border-radius: 10px;
 }
 
 .dish-main {
@@ -530,4 +528,8 @@ a {
     color: white;
 }
 
+
+.container-fluid {
+    padding: 0;
+}
 
