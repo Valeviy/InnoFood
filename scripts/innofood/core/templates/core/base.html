@@ -1,26 +1,68 @@
 {% load static %}
-<html>
-    <head>
-        <title>InnoFood</title>
-    </head>
-    <body>
-        
-<!--        TOP BAR GOES HERE-->
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <p>
-            <a href='/cafes'>InnoFood</a>
-            <a href='/complaints'>Active complaints</a>
-            <a href='/orders'>My orders</a>
-            {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">logout</a>
-            {% endif %}
-        </p>
-<!--        CONTENT HERE-->
-        
-        <p>
-            {% block content %}
-            {% endblock %}
-        </p>
-        
-    </body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://kit.fontawesome.com/d1fb1d9d71.js" crossorigin="anonymous"></script>
+    <link href="/static/css/innofood.css" rel="stylesheet">
+
+    <title>InnoFood Delivery</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <a class="navbar-brand" href="/cafes/"><h2 class="ml-5">InnoFood <span class="role">&bull; Delivery</span></h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto ml-5">
+
+            <li class="nav-item ml-2 {% if request.resolver_match.url_name == "cafes" %}active{% endif %}">
+                <a class="nav-link" href="{% url "cafes" %}"> Cafes<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item ml-2">
+                <a class="nav-link" href="/complaints/"> Active complaints <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item ml-2">
+                <a class="nav-link" href="/orders/"> My orders <span class="sr-only"></span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item">
+                <a class="nav-link" href="/my_account/"> <i  class="fas fa-user-circle"></i> <span class="sr-only"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<header class="masthead">
+    {% block content %}
+    {% endblock %}
+</header>
+
+<footer>
+    <div class="container">
+        <p>&copy; InnoFood Delivery <br> Innopolis 2019 </p>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
 </html>
