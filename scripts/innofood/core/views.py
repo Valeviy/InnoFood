@@ -84,6 +84,7 @@ def registration_view(request):
 
 @login_required
 def create_order(request):
+    print(request.POST)
     dishes = request.POST.getlist('dish_cart')
     address = request.POST.get('destination')
     print('CREATE', dishes, address)

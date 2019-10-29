@@ -3,19 +3,31 @@
 {% block content %}
 
 
-<div class="container-fluid h-100 ">
-    <div class="row h-100">
-        <div class="col-md-6 my-auto">
-            <div class="container my-order">
-                <h2>Order #</h2>
-                <ul class="orderListing">
-                </ul>
-                <p class="total"></p>
+<div class="container-fluid h-100">
+
+    <div class="row h-100 ">
+
+
+            <div class="col-md-6 my-auto dish-main">
+                <form action="/new_order/" method="post">
+            {% csrf_token %}
+                <div class="container my-order">
+                    <h2>Order #</h2>
+                    <ul class="orderListing">
+                    </ul>
+                    <p class="total"></p>
+                 <div class="form-group my-auto col-lg-8">
+                    <input style="color:#000" type="text" class="form-control" name="destination" placeholder="Address">
+                </div>
+                <div class="dishes-button">
+                    <input id="send_selected" type="submit" class="btn btn-success cartSubmit" value="Submit Order"/>
+                </div>
+                </div>
+                </form>
             </div>
-        </div>
-        <div class="col-md-6 my-auto dish-main">
-            <form action="/new_order/" method="post">
-                {% csrf_token %}
+
+
+            <div class="col-md-6 my-auto dish-main">
                 <div class="row dishesList">
                     {% for dish in object_list %}
                     <div class="col-md-6 dish">
@@ -32,15 +44,13 @@
                     </div>
                     {% endfor %}
                 </div>
-                 <div class="form-group col-lg-7">
-                        <input type="text" class="form-control" name="destination"  placeholder="Address">
-                    </div>
-                <div class="dishes-button">
-                    <input id="send_selected" type="submit" class="btn btn-success cartSubmit" value="Submit Order"/>
-                </div>
-            </form>
-        </div>
+
+            </div>
+
+
+
     </div>
+
 </div>
 <script src="/static/js/innofood.js"></script>
 {% endblock %}

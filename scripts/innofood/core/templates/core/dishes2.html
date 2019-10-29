@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<form action="/new_order/" method="post">
+{% csrf_token %}
+
+
+<div id='dish_list'>
+	{% for dish in object_list %}
+		<p><input class="number" type="number" name='dish_cart' id="checkbox_{{ dish.id }}"value="{{ dish.id }}">{{dish.name}} | {{ dish.price }}</p>
+		<p><input style="display: none" type="number" name='dish_listed' value="{{ dish.id }}"> </p>
+		<p></p>
+
+	{% endfor %}
+
+
+	<button onclick="addToCart()" type='button' id='add_Cart'>Add to Cart 1</button>
+</div>
+
+
+<div id='shopping_cart' style="display: none">
+	<p> This is the confirmation all the * you got </p>
+	<button onclick="shoppingCart()" type='button' id='add_shoppingCart'>Confirm Order 2</button>
+
+</div>
+
+
+<div id='address_page' style="display: none">
+
+	<p>Address: <input class="text-input" type="text" name='destination'></p>
+	<input id="send_cart" type="submit" value="Continue" />
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+function addToCart() {
+	var dishList;
+	var shopping_cart;
+
+	dishList = document.getElementById("dish_list");
+	hideMe(dishList);
+
+	shopping_cart = document.getElementById("shopping_cart");
+	showMe(shopping_cart);
+
+}
+
+function showMe(theVar){
+	var showIt = theVar;
+	showIt.style='block';
+
+}
+
+function hideMe(theVar){
+	var hideIt = theVar;
+	hideIt.style='display:none';
+
+}
+
+function shoppingCart(){
+	var shoppingCart;
+	var address_page;
+
+	shoppingCart = document.getElementById("add_shoppingCart");
+	hideMe(shoppingCart);
+
+	address_page = document.getElementById("address_page");
+	showMe(address_page);
+
+}
+
+</script>
+
+
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	function action1(){
+		var esconder;
+		esconder = document.getElementById('destination')
+		console.log(esconder);
+		get
+	}
+
+</script>
