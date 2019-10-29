@@ -67,7 +67,7 @@ class Dish(models.Model):
 
 class OrderDetail(models.Model):
     dishes = models.ForeignKey(Dish, on_delete=models.CASCADE)
-
+    quantity = models.IntegerField(default=0)
     def get_all_dishes(self):
         pass
 

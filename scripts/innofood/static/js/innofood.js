@@ -21,7 +21,7 @@ let fillOrderList = () => {
         let li = document.createElement('li');
         li.className = 'order_item';
         total += parseInt(order[2]);
-        li.innerHTML = `${order[1]} <i onclick="deleteDish(${index})" class="fas fa-trash" style="float: right; font-size: 15px!important;"></i> <input type="hidden" name="dish_cart" value="${order}"}> `;
+        li.innerHTML = `${order[1]} <i onclick="deleteDish(${index})" class="fas fa-trash" style="float: right; font-size: 15px!important;"></i> <input type="hidden" name="dish_listed" value="${order[0]}"}> `;
 
         orderListing.appendChild(li);
     });
