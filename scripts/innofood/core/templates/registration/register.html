@@ -5,17 +5,29 @@
     <div class="container-fluid h-100 " >
         <div class="row h-100">
             <div class="col-md-4 offset-md-4 my-auto">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST">
                      {% csrf_token %}
-                    <div class="container text-center mb-5">
+                     {% for field in form %}
+                     <p>
+                       {{ field.label_tag }}<br>
+                       {{ field }} <br>
+                       <!-- {% if field.help_text %}
+                         <small style="line-height: 0.1em; font-size: 4px; color: grey">{{ field.help_text }}</small>
+                       {% endif %} -->
+                       {% for error in field.errors %}
+                         <p style="color: red">{{ error }}</p>
+                       {% endfor %}
+                     </p>
+                     {% endfor %}
+                    <!-- <div class="container text-center mb-5">
                         <h5> To enjoy food delivery, please sing up </h5>
                     </div>
                      {% if form.errors %}
                     <p class="label label-danger">
-                        Your username, email or password didn't correct.
+                        Your username, email or password aren't correct.
                         Please try again.
                     </p>
-                {% endif %}
+                     {% endif %}
                     <div class="form-group">
                         <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
                                placeholder="Name">
@@ -26,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Sing Up</button>
                     </div>

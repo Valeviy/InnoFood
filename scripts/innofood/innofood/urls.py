@@ -24,25 +24,29 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('register/', views.registration_view, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
-
+    # path('redirectlog/', views.redirectlog, name='redirectlog'),
     # CUSTOMER PART
     path('cafes/', views.CafeListView.as_view(), name='cafes'),
     path('cafes/<int:id>/', views.DishListView.as_view(), name='dishes'),
     # path('orders/', ..., name='customer_orders'),
     # path('complaint/', ..., name='customer_new_complaint'),
     path('cart/', views.CartListView.as_view(), name='cart'),
-    path('new_order/', views.create_order, name='new_order'),
+
+#    path('new_order/', views.create_order, name='new_order'),
+    path('cafes/<int:id>/new_order/', views.create_order, name='new_order'),
     path('account/', views.user_account_change, name='customer_account'),
     # path('complaints/', ..., name='customer_complaints'),
 
     # MANAGER PART
-    path('manager/orders', views.ManagerOrders.as_view(), name='manager_orders'),
-    path('manager/orders/<int:confirmed>', views.ManagerOrdersStatus.as_view(), name='manager_orders_status'),
-    # path('manager/complaints/<status:bool>', ..., name='manager_complaints')
-
-    # ADMIN PART
-    # path('admin/cafes/', ..., name='admin_cafes')
-    # path('admin/managers/', ..., name='admin_managers')
+    path('manager/orders/', views.ManagerOrders.as_view(), name='manager_orders'),
+    path('manager/confirmed/', views.ManagerOrdersConfirmed.as_view(), name='manager_confirmed'),
+    path('manager/declined/', views.ManagerOrdersDeclined.as_view(), name='manager_declined'),
+    path('manager/switch_order/<int:id>/<int:status>', views.switch_order, name='switch_order'),
+    path('manager/cafe/', views.ManagerCafe.as_view(), name='manager_cafe'),
+    path('manager/dish/', views.ManagerDish.as_view(), name='manager_dish'),
+    path('manager/update_dish/<int:pk>/', views.ManagerDishUpdate.as_view(), name='manager_dish_update'),
+    path('manager/showhide_dish/<int:id>/', views.showhide_dish, name='showhide_dish'),
+    path('manager/delete_dish/<int:id>/', views.delete_dish, name='delete_dish'),
 
     path('admin/', admin.site.urls),
 

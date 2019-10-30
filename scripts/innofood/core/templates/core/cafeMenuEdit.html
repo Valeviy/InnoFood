@@ -1,152 +1,43 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'core/manager_base.html' %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-
-    <script src="https://kit.fontawesome.com/d1fb1d9d71.js" crossorigin="anonymous"></script>
-    <title>Hello, world!</title>
-
-</head>
-<body>
-<div class="container-fluid">
-
-    <div class="container-fluid header">
-        <div class="row">
-            <div class="col">
-                <h2>InnoFood <span class="role">&bull; Manager</span></h2>
-            </div>
-
-            <div class="col-1 align-self-center">
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
-        </div>
+{% block main %}
+<div class="row">
+    <div class="col-9">
+        <h4>Cafe menu</h4>
     </div>
-
-    <div class="row manager-container">
-        <div class="col-2 leftMenu ">
-            <div class="row text-center justify-content-center">
-                <div class="col-10 menuOption">Cafe</div>
-                <div class="col-10 menuOption">Orders</div>
-            </div>
-        </div>
-        <div class="col managerMain">
-            <div class="row">
-                <div class="col-2">
-                    <h4>Cafe menu</h4>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addDish">
-                        Add dish
-                    </button>
-                </div>
-            </div>
-
-            <div class="row manager__dish">
-                <div class="col-10">
-                    DIsh name
-                </div>
-                <div class="col-1">
-                    <i class="fas fa-pen" data-toggle="modal" data-target="#editDish"></i>
-                </div>
-                <div class="col-1">
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div>
-
-            <div class="row manager__dish">
-                <div class="col-10">
-                    DIsh name
-                </div>
-                <div class="col-1">
-                    <i class="fas fa-pen"></i>
-                </div>
-                <div class="col-1">
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div>
-
-        </div>
+    <div class="col-3">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addDish" onclick="location.href='/manager/dish/';">
+            Add dish
+        </button>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="addDish" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add new dish</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter name">
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" class="form-control" id="price" placeholder="Enter price">
-                        </div>
-
-                        <button type="submit" class="btn btn-success">Add</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-<!-- Modal -->
-    <div class="modal fade" id="editDish" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit dish</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter name">
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" class="form-control" id="price" placeholder="Enter price">
-                        </div>
-
-                        <button type="submit" class="btn btn-success">Add</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+{% for dish in object_list %}
+
+<div class="row manager__dish">
+    <div class="col-9">
+        {{ dish.name }} | {{ dish.price }} RUB
+    </div>
+
+    <div class="col-3">
+        <a href="/manager/showhide_dish/{{dish.id}}/">
+            {% if dish.in_menu %}
+            <i style="font-size:10pt!important" class="fas fa-eye"></i>
+    
+            {% else %}
+            <i style="font-size:10pt!important" class="fas fa-eye-slash"></i>
+    
+    
+            {% endif %}
+        </a>
+            <span>:</span>
+        <a href="/manager/update_dish/{{dish.id}}/"><i style="font-size:10pt!important" class="fas fa-pen" data-target="#editDish"></i></a>
+        <span>:</span>
+        <a href="/manager/delete_dish/{{dish.id}}/"><i style="font-size:10pt!important" class="fas fa-trash-alt"></i></a>
+    </div>
+    
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://kit.fontawesome.com/d1fb1d9d71.js" crossorigin="anonymous"></script>
+    <link href="/static/css/innofood.css" rel="stylesheet">
+
+    <title>InnoFood Delivery</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top " id="mainNav">
+    <a class="navbar-brand" href="/manager/cafe/"><h2 class="ml-5">InnoFood <span class="role">&bull; Manager</span></h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item">
+                <a href="/accounts/logout/"><i class="fas fa-sign-out-alt"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<header class="masthead">
+    <div class="container-fluid h-100 " >
+        <div class="row h-100">
+            <div class="col-md-10 offset-md-1 my-auto">
+        <div class="row manager-container">
+        <div class="col-md-4 leftMenu ">
+            <div class="row text-center justify-content-center">
+                <div class="col-md-10 mt-5 mb-2">
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/manager/cafe/">Cafe</a>
+
+                </div>
+                <div class="col-md-10 mb-5 mt-2">
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/manager/orders/">Orders</a>
+
+                </div>
+
+        </div>
+        </div>
+        <div class="col-8 managerMain">
+    {% block main %}
+    {% endblock %}
+
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="orderDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Order #</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/manage_order/" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="customer"  placeholder="Customer"><br>
+                            <input type="text" class="form-control" id="address"  placeholder="Address"><br>
+                            <input type="text" class="form-control" id="cost"  placeholder="Cost"><br>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-danger">Decline</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</header>
+
+<footer>
+    <div class="container">
+        <p>&copy; InnoFood Delivery <br> Innopolis 2019 </p>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

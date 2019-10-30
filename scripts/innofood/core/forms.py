@@ -1,11 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
 
-from .models import InnoFoodUser
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100)
-    class Meta:
-        model = InnoFoodUser
-        fields = ["username", "email", "password"]
+    # class Meta:
+    #     model = settings.AUTH_USER_MODEL
+    #     fields = ["username", "email", "password"]
 
